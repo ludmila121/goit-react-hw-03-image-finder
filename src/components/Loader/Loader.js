@@ -1,6 +1,8 @@
 import React from 'react';
 import  {MutatingDots} from 'react-loader-spinner';
 import s from './Loader.module.css';
+
+
 const Loader = () => {
     return (
       <div className={s.Loader}>

@@ -5,7 +5,7 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default class Modal extends Component {
+ class Modal extends Component {
   static propTypes = {
     onCloseModal: PropTypes.func.isRequired,
     largeImageURL: PropTypes.string.isRequired,
@@ -40,7 +40,8 @@ export default class Modal extends Component {
                 <img src={largeImageURL} alt={alt} />
             </div>
         </div>,
-        modalRoot,
+            modalRoot,
     );
-  };
+  }
 }
+export default Modal;
