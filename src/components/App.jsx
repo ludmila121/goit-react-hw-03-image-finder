@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {ToastContainer} from 'react-toastify';
-//import 'react-toastify/dist/ReactToatify.css';
 import './App.css';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
-import api from "services/api-servise";
+import api from 'services/api-servise';
 import Button from './Button/Button'
 import Modal from './Modal/Modal';
 import Loader from './Loader/Loader';
@@ -21,6 +20,7 @@ export default class App extends Component {
     isModalOpen: false,
     isLoading: false,
   }
+  
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchName !== this.state.searchName || prevState.page !== this.state.page){
       // console.log('prevState.searchName:', prevState.searchName);
@@ -37,7 +37,7 @@ export default class App extends Component {
 
   handleFormSubmit = searchName => {
     if (searchName === this.state.searchName) return;
-    this.setState({searchName: searchName, page: 1, image: [], isModalOpen: false, isLoading: true});
+    this.setState({searchName: searchName, page: 1, images: [], isModalOpen: false, isLoading: true});
   }
   onLoadMore = () => {
     this.setState(() => ({ page: this.state.page +1, isLoading: true}));
@@ -66,4 +66,4 @@ render(){
   );
 }
   
-};
+}

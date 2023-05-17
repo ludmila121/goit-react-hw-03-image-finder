@@ -6,41 +6,41 @@ import s from './Modal.module.css';
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
-   static propTypes = {
-     onCloseModal: PropTypes.func.isRequired,
-     largeImageURL: PropTypes.string.isRequired,
-     alt: PropTypes.string.isRequired,
-   };
- 
-     componentDidMount() {
-        document.addEventListener('keydown', this.onEscClick);
-     }
+  static propTypes = {
+    onCloseModal: PropTypes.func.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  };
 
-     componentWillUnmount(){
-        document.removeEventListener('keydown', this.onEscClick);
-     }
+  componentDidMount() {
+    document.addEventListener('keydown', this.onEscClick);
+  }
 
-     onEscClick = e => {
-        if (!e.key === 'Escape') return;
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onEscClick);
+  }
 
-        this.props.onCloseModal();
-     };
+  onEscClick = e => {
+    if (!e.key === 'Escape') return;
 
-     onBackdropClick = e => {
-        if (e.target !== e.currentTarget) return;
-        this.props.onCloseModal();
-     };
+    this.props.onCloseModal();
+  };
 
-     render = () => {
-        const { largeImageURL, alt } = this.props;
-        return createPortal(
-            <div className={s.Overlay} onClick={this.onBackdropClick}>
-                <div className= {s.Madal}>
-                    <img src={largeImageURL} alt={alt}/>
-                </div>
-            </div>,
-            modalRoot,
-        );
-     };
+  onBackdropClick = e => {
+    if (e.target !== e.currentTarget) return;
 
+    this.props.onCloseModal();
+  };
+
+  render = () => {
+    const { largeImageURL, alt } = this.props;
+    return createPortal(
+        <div className={s.Overlay} onClick={this.onBackdropClick}>
+            <div className={s.Modal}>
+                <img src={largeImageURL} alt={alt} />
+            </div>
+        </div>,
+        modalRoot,
+    );
+  };
 }
