@@ -63,11 +63,11 @@ export default class App extends Component {
   onLoadMore = () => {
     this.setState(() => ({ page: this.state.page + 1, isLoading: true }));
   };
-  onOpenModal = id =>
+  onOpenModal = ({ largeImageURL, alt }) =>
     this.setState(prevState => ({
       isModalOpen: true,
-      largeImage: prevState.images.find(image => image.id === id).largeImageURL,
-      alt: prevState.images.find(image => image.id === id).tags,
+      largeImage: largeImageURL,
+      alt: alt,
     }));
 
   onCloseModal = () => this.setState({ isModalOpen: false });
