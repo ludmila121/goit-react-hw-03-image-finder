@@ -7,17 +7,9 @@ const PER_PAGE = 12;
 const getImages = (searchName, page) => {
   return axios
     .get(
-      `${BASE_URL}?key=${API_KEY}&q=${searchName}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${PER_PAGE}`,
+      `${BASE_URL}?key=${API_KEY}&q=${searchName}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${PER_PAGE}`
     )
-    .then(response =>
-      response.data.hits.map(({ id, webformatURL, largeImageURL, tags }) => ({
-        id,
-        webformatURL,
-        largeImageURL,
-        tags,
-      })),
-        
-    );
+    .then(({ data: { hits, totalHits } }) => ({ hits, totalHits }));
 };
 
 const api = {
