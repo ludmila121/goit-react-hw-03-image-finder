@@ -28,16 +28,12 @@ export default class App extends Component {
     ) {
       api
         .getImages(this.state.searchName, this.state.page)
-        .then(response => {
-          //const { hits: images, totalHits } = response;
+        .then(({ hits: images, totalHits }) =>
           this.setState(prevState => ({
-            images: [
-              ...prevState.images,
-              ...this.normalizetImage(response.hits),
-            ],
-            showBtn: this.state.page < Math.ceil(response.totalHits / 12),
-          }));
-        })
+            images: [...prevState.images, ...this.normalizetImage(images)],
+            showBtn: this.state.page < Math.ceil(totalHits / 12),
+          }))
+        )
         .catch(error => {
           console.log(error.message);
           this.setState({ showBtn: false });
