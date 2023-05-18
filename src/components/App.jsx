@@ -60,7 +60,7 @@ render(){
       <ImageGallery images={images} onOpenModal={this.onOpenModal}/>
       {isLoading && <Loader/>}
       {images.length > 0 && !isLoading && <Button onClick={this.onLoadMore}/>}
-      {isModalOpen && <Modal largeImageURL= {largeImage} alt={alt} oncloseModal ={this.onCloseModal}/>}
+      {isModalOpen && <Modal largeImageURL= {largeImage} alt={alt} onСloseModal ={this.onCloseModal}/>}
       <ToastContainer autoClose={3000}/>
 
     </div>
